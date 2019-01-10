@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NewsLetter</string>
+    <string name="default_title">Titre par défaut</string>
+    <string name="default_desc">Description par défaut</string>
 </resources>

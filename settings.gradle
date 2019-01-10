@@ -1,1 +1,4 @@
-include ':app', ':testttttt', ':newsapp', ':newsletter'
+include ':app'
+//include ':testttttt'
+include ':newsapp'
+include ':newsletter'
