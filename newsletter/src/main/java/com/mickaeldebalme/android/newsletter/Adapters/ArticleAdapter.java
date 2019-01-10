@@ -29,7 +29,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
 
     public ArticleAdapter(List<Article> articles, ArticlesListFragment listener) {
         this.articles = articles;
-
+        this.listener = listener;
     }
 
     @NonNull
@@ -54,7 +54,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView mTitle, mDescription;
-        ImageView mImage;
+        ImageView mImage, mShare;
         View view;
 
         MyViewHolder(View itemView) {
@@ -63,9 +63,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
             mTitle = itemView.findViewById(R.id.article_title);
             mDescription = itemView.findViewById(R.id.article_description);
             mImage = itemView.findViewById(R.id.article_image);
+            mShare = itemView.findViewById(R.id.share_btn);
         }
 
         private void bindItem(final Article article) {
+
+            mShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onShare(article);
+                }
+            });
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -1,6 +1,7 @@
 package com.mickaeldebalme.android.newsletter.Fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +64,7 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
         ArticlesAPI service = retrofit.create(ArticlesAPI.class);
 
 
-        Call<ArticlesApiResponse> response = service.listArticles("bitcoin", Constants.API_KEY);
+        Call<ArticlesApiResponse> response = service.listArticles("cryptocurrency", Constants.API_KEY);
         response.enqueue(new Callback<ArticlesApiResponse>() {
             @Override
             public void onResponse(Call<ArticlesApiResponse> call, Response<ArticlesApiResponse> response) {
@@ -81,14 +82,16 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
 
     @Override
     public void onSelect(Article article) {
-
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+        browserIntent.setData(Uri.parse(article.getUrl()));
+        startActivity(browserIntent);
     }
 
     @Override
     public void onShare(Article article) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, article.getTitle());
+        sendIntent.putExtra(Intent.EXTRA_TEXT, article.getTitle() + " " + article.getUrl());
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
