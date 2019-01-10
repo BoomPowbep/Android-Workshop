@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FirstApp</string>
+    <string name="button_2">Button 2</string>
+    <string name="button">Button</string>
+    <string name="pr_nom">Prénom</string>
+    <string name="pr_nom1">Prénom</string>
+    <string name="nom">Nom</string>
+    <string name="nom1">Nom</string>
+    <string name="button1">OK</string>
+</resources>

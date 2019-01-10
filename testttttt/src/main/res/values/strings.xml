@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Testttttt</string>
+    <string name="apv_title_default">Nom de la planète</string>
+    <string name="apv_default_desc">Description de la planète</string>
+    <string name="titlepla">Nom de la planète</string>
+    <string name="descpla">Description de la planète</string>
+
+    <string-array name="planetes_spinner">
+        <item>Terre</item>
+        <item>Mars</item>
+        <item>Venus</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
