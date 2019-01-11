@@ -5,9 +5,11 @@ import android.view.Window;
 
 import com.mickaeldebalme.android.newsletter.Fragments.ArticlesListFragment;
 import com.mickaeldebalme.android.newsletter.R;
+import com.mickaeldebalme.android.newsletter.ViewModels.ArticleViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
 
 public class MainActivity extends AppCompatActivity {
 
