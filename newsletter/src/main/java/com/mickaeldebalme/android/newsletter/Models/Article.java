@@ -1,16 +1,32 @@
 package com.mickaeldebalme.android.newsletter.Models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Article {
 
-    private String urlToImage, title, description, url;
+    @PrimaryKey(autoGenerate = true)
+    public int id;
 
-    public Article(String urlToImage, String title, String description, String url) {
+    private String urlToImage, title, description, url, content;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Article(String urlToImage, String title, String description, String url, String content) {
+
         this.urlToImage = urlToImage;
         this.title = title;
         this.description = description;
         this.url = url;
+        this.content = content;
     }
-
 
     public String getUrlToImage() {
         return urlToImage;
@@ -51,6 +67,7 @@ public class Article {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", url='" + url + '\'' +
+                ", content='" + content + '\'' +
                 '}';
     }
 }
