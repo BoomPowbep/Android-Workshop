@@ -7,8 +7,15 @@ import android.widget.Toast;
 
 public class NetworkHelper {
 
+    /**
+     * Status de la connectivité
+     */
     private static boolean networkSatus;
 
+    /**
+     * Initialisation
+     * @param context contexte
+     */
     public static void init(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -22,6 +29,10 @@ public class NetworkHelper {
         }
     }
 
+    /**
+     * Récupère le statut de la connectivité
+     * @return statut de la connectivité
+     */
     public static boolean getNetworkStatus() {
         return networkSatus;
     }
