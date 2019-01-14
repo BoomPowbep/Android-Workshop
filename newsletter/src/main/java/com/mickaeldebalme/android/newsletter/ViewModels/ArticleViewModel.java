@@ -1,24 +1,19 @@
 package com.mickaeldebalme.android.newsletter.ViewModels;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.widget.Toast;
-
+import com.mickaeldebalme.android.newsletter.Databases.DatabaseHelper;
 import com.mickaeldebalme.android.newsletter.Databases.NewsDatabase;
 import com.mickaeldebalme.android.newsletter.Models.Article;
 import com.mickaeldebalme.android.newsletter.Models.ArticlesApiResponse;
 import com.mickaeldebalme.android.newsletter.Network.ArticlesAPI;
+import com.mickaeldebalme.android.newsletter.Network.NetworkHelper;
 import com.mickaeldebalme.android.newsletter.Utils.Constants;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.room.Room;
 import bolts.Continuation;
 import bolts.Task;
 import retrofit2.Call;
@@ -30,26 +25,29 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ArticleViewModel extends ViewModel {
 
     private MutableLiveData<List<Article>> articlesLiveData;
-    private List<Article> articles = new ArrayList<>();
+    private MutableLiveData<Article> selected = new MutableLiveData<>();
 
     public LiveData<List<Article>> getArticles() {
 
-        if(articlesLiveData == null) {
+        if (articlesLiveData == null) {
             articlesLiveData = new MutableLiveData<>();
+
+            if (NetworkHelper.getNetworkStatus()) {
+                this.loadArticlesFromNetwork();
+            } else {
+                this.loadArticlesFromDatabase();
+            }
         }
 
-//        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-//        boolean isConnected = activeNetwork != null && activeNetwork.isConnected();
-//        if (isConnected) {
-//            this.loadArticlesFromNetwork();
-//            Toast.makeText(getContext(), "Connected to internet", Toast.LENGTH_SHORT).show();
-//        } else {
-//            this.loadArticlesFromDatabase();
-//            Toast.makeText(getContext(), "No connection", Toast.LENGTH_SHORT).show();
-//        }
-
         return articlesLiveData;
+    }
+
+    public void setSelected(Article article) {
+        selected.setValue(article);
+    }
+
+    public LiveData<Article> getSelected() {
+        return selected;
     }
 
     /**
@@ -63,19 +61,15 @@ public class ArticleViewModel extends ViewModel {
 
         ArticlesAPI service = retrofit.create(ArticlesAPI.class);
 
-
         Call<ArticlesApiResponse> response = service.listArticles("cryptocurrency", Constants.API_KEY);
         response.enqueue(new Callback<ArticlesApiResponse>() {
             private NewsDatabase db;
 
             @Override
             public void onResponse(Call<ArticlesApiResponse> call, Response<ArticlesApiResponse> response) {
+                List<Article> articles = response.body().getArticles();
                 articlesLiveData.setValue(articles);
-                articles = response.body().getArticles();
-
-//                saveArticlesInDb(articles);
-
-
+                saveArticlesInDb(articles);
             }
 
             @Override
@@ -90,45 +84,40 @@ public class ArticleViewModel extends ViewModel {
      *
      * @param articles Liste des articles à sauver dans la db
      */
-//    private void saveArticlesInDb(final List<Article> articles) {
-//
-//        Task.callInBackground(new Callable<Void>() {
-//            public Void call() {
-//                NewsDatabase db = Room.databaseBuilder(getContext(), NewsDatabase.class, "news-db").build();
-//                for (int i = 0; i < articles.size(); i++) {
-//                    db.articleDao().insertAll(articles.get(i));
-//                }
-//                return null;
-//            }
-//        }).continueWith(new Continuation<Void, Object>() {
-//            @Override
-//            public Object then(Task<Void> task) throws Exception {
-//
-//                Toast.makeText(getContext(), "Articles insterted in DB", Toast.LENGTH_SHORT).show();
-//                return null;
-//            }
-//        }, Task.UI_THREAD_EXECUTOR);
-//    }
+    private void saveArticlesInDb(final List<Article> articles) {
+
+        Task.callInBackground(new Callable<Void>() {
+            public Void call() {
+                DatabaseHelper.getDatabase().articleDao().insertAll(articles);
+
+                return null;
+            }
+        }).continueWith(new Continuation<Void, Object>() {
+            @Override
+            public Object then(Task<Void> task) throws Exception {
+                System.out.println("Articles saved in database");
+                return null;
+            }
+        }, Task.UI_THREAD_EXECUTOR);
+    }
 
     /**
      * Charge les articles depuis la base de données
      */
-//    private void loadArticlesFromDatabase() {
-//
-//        Task.callInBackground(new Callable<Void>() {
-//            @Override
-//            public Void call() throws Exception {
-//                NewsDatabase db = Room.databaseBuilder(getContext(), NewsDatabase.class, "news-db").build();
-//                articles = db.articleDao().getAll();
-//                return null;
-//            }
-//        }).continueWith(new Continuation<Void, Object>() {
-//            @Override
-//            public Object then(Task<Void> task) throws Exception {
-//
-//                Toast.makeText(getContext(), "Articles loaded from DB", Toast.LENGTH_SHORT).show();
-//                return null;
-//            }
-//        }, Task.UI_THREAD_EXECUTOR);
-//    }
+    private void loadArticlesFromDatabase() {
+
+        Task.callInBackground(new Callable<List<Article>>() {
+            @Override
+            public List<Article> call() {
+                return DatabaseHelper.getDatabase().articleDao().getAll();
+            }
+        }).continueWith(new Continuation<List<Article>, Object>() {
+            @Override
+            public Object then(Task<List<Article>> task) {
+                articlesLiveData.setValue(task.getResult());
+                System.out.println("Articles loaded from database");
+                return null;
+            }
+        }, Task.UI_THREAD_EXECUTOR);
+    }
 }

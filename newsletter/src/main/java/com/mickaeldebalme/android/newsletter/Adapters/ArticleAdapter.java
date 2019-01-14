@@ -54,7 +54,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView mTitle, mDescription;
-        ImageView mImage, mShare;
+        ImageView mImage, mShare, mLike;
         View view;
 
         MyViewHolder(View itemView) {
@@ -64,6 +64,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
             mDescription = itemView.findViewById(R.id.article_description);
             mImage = itemView.findViewById(R.id.article_image);
             mShare = itemView.findViewById(R.id.share_btn);
+            mLike = itemView.findViewById(R.id.like_btn);
         }
 
         private void bindItem(final Article article) {
@@ -79,6 +80,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
                 @Override
                 public void onClick(View v) {
                     listener.onSelect(article);
+                }
+            });
+
+            mLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onLike(article);
                 }
             });
 

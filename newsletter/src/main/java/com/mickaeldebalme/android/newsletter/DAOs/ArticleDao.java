@@ -25,7 +25,7 @@ public interface ArticleDao {
     Article findByTitle(String title);
 
     @Insert
-    void insertAll(Article... articles);
+    void insertAll(List<Article> articles);
 
     @Delete
     void delete(Article article);

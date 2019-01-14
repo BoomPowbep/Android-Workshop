@@ -1,45 +1,29 @@
 package com.mickaeldebalme.android.newsletter.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.mickaeldebalme.android.newsletter.Adapters.ArticleAdapter;
-import com.mickaeldebalme.android.newsletter.Databases.NewsDatabase;
 import com.mickaeldebalme.android.newsletter.Listeners.ArticleListener;
 import com.mickaeldebalme.android.newsletter.Models.Article;
-import com.mickaeldebalme.android.newsletter.Models.ArticlesApiResponse;
-import com.mickaeldebalme.android.newsletter.Network.ArticlesAPI;
 import com.mickaeldebalme.android.newsletter.R;
-import com.mickaeldebalme.android.newsletter.Utils.Constants;
 import com.mickaeldebalme.android.newsletter.ViewModels.ArticleViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
-import bolts.Continuation;
-import bolts.Task;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ArticlesListFragment extends Fragment implements ArticleListener {
 
@@ -52,7 +36,7 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        model = ViewModelProviders.of(this).get(ArticleViewModel.class);
+        model = ViewModelProviders.of(getActivity()).get(ArticleViewModel.class);
     }
 
     @Override
@@ -88,9 +72,19 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
      */
     @Override
     public void onSelect(Article article) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-        browserIntent.setData(Uri.parse(article.getUrl()));
-        startActivity(browserIntent);
+//        Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+//        browserIntent.setData(Uri.parse(article.getUrl()));
+//        startActivity(browserIntent);
+        model.setSelected(article);
+        showDetail();
+    }
+
+    private void showDetail() {
+        ArticleDetailFragment frag = new ArticleDetailFragment();
+        FragmentTransaction transac = getActivity().getSupportFragmentManager().beginTransaction();
+        transac.replace(R.id.fragment_container, frag);
+        transac.addToBackStack(null);
+        transac.commit();
     }
 
     /**
@@ -105,5 +99,25 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
         sendIntent.putExtra(Intent.EXTRA_TEXT, article.getTitle() + " " + article.getUrl());
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
+    }
+
+    /**
+     * Click sur le bouton like
+     * @param article Article concerné par le like
+     */
+    @Override
+    public void onLike(Article article) {
+
+        ImageView likeImg = recyclerView.findViewById(R.id.like_btn);
+
+        if(article.isLiked()) {
+            article.setLiked(false);
+            likeImg.setImageResource(R.drawable.empty_h);
+        }
+        else {
+            article.setLiked(true);
+            likeImg.setImageResource(R.drawable.full_h);
+        }
+
     }
 }

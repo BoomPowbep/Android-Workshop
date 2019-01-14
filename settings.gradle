@@ -1,4 +1,4 @@
-include ':app'
+//include ':app'
 //include ':testttttt'
-include ':newsapp'
+//include ':newsapp'
 include ':newsletter'

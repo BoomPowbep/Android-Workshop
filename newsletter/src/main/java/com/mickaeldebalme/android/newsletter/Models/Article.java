@@ -7,25 +7,28 @@ import androidx.room.PrimaryKey;
 public class Article {
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
     private String urlToImage, title, description, url, content;
 
-    public String getContent() {
-        return content;
-    }
+    private boolean liked;
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Article(String urlToImage, String title, String description, String url, String content) {
-
+    public Article(int id, String urlToImage, String title, String description, String url, String content, boolean liked) {
+        this.id = id;
         this.urlToImage = urlToImage;
         this.title = title;
         this.description = description;
         this.url = url;
         this.content = content;
+        this.liked = liked;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUrlToImage() {
@@ -60,14 +63,32 @@ public class Article {
         this.url = url;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
-                "urlToImage='" + urlToImage + '\'' +
+                "id=" + id +
+                ", urlToImage='" + urlToImage + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", url='" + url + '\'' +
                 ", content='" + content + '\'' +
+                ", liked=" + liked +
                 '}';
     }
 }

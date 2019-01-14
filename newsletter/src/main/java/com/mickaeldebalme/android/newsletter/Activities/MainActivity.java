@@ -3,7 +3,9 @@ package com.mickaeldebalme.android.newsletter.Activities;
 import android.os.Bundle;
 import android.view.Window;
 
+import com.mickaeldebalme.android.newsletter.Databases.DatabaseHelper;
 import com.mickaeldebalme.android.newsletter.Fragments.ArticlesListFragment;
+import com.mickaeldebalme.android.newsletter.Network.NetworkHelper;
 import com.mickaeldebalme.android.newsletter.R;
 import com.mickaeldebalme.android.newsletter.ViewModels.ArticleViewModel;
 
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         getSupportActionBar().hide(); //hide the title bar
         setContentView(R.layout.activity_main);
+
+        DatabaseHelper.init(this);
+        NetworkHelper.init(this);
 
         this.displayArticlesList();
     }
