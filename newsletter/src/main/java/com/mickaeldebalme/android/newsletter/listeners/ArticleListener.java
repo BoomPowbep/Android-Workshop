@@ -1,6 +1,6 @@
-package com.mickaeldebalme.android.newsletter.Listeners;
+package com.mickaeldebalme.android.newsletter.listeners;
 
-import com.mickaeldebalme.android.newsletter.Models.Article;
+import com.mickaeldebalme.android.newsletter.models.Article;
 
 public interface ArticleListener {
     void onSelect(Article article);

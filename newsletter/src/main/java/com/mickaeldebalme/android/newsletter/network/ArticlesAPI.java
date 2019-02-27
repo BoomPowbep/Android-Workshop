@@ -1,6 +1,6 @@
-package com.mickaeldebalme.android.newsletter.Network;
+package com.mickaeldebalme.android.newsletter.network;
 
-import com.mickaeldebalme.android.newsletter.Models.ArticlesApiResponse;
+import com.mickaeldebalme.android.newsletter.models.ArticlesApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

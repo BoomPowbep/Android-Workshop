@@ -1,17 +1,15 @@
-package com.mickaeldebalme.android.newsletter.Activities;
+package com.mickaeldebalme.android.newsletter.activities;
 
 import android.os.Bundle;
 import android.view.Window;
 
-import com.mickaeldebalme.android.newsletter.Databases.DatabaseHelper;
-import com.mickaeldebalme.android.newsletter.Fragments.ArticlesListFragment;
-import com.mickaeldebalme.android.newsletter.Network.NetworkHelper;
+import com.mickaeldebalme.android.newsletter.databases.DatabaseHelper;
+import com.mickaeldebalme.android.newsletter.fragments.ArticlesListFragment;
+import com.mickaeldebalme.android.newsletter.network.NetworkHelper;
 import com.mickaeldebalme.android.newsletter.R;
-import com.mickaeldebalme.android.newsletter.ViewModels.ArticleViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
 
 public class MainActivity extends AppCompatActivity {
 

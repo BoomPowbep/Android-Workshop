@@ -1,4 +1,4 @@
-package com.mickaeldebalme.android.newsletter.Fragments;
+package com.mickaeldebalme.android.newsletter.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.mickaeldebalme.android.newsletter.Adapters.ArticleAdapter;
-import com.mickaeldebalme.android.newsletter.Listeners.ArticleListener;
-import com.mickaeldebalme.android.newsletter.Models.Article;
+import com.mickaeldebalme.android.newsletter.adapters.ArticleAdapter;
+import com.mickaeldebalme.android.newsletter.listeners.ArticleListener;
+import com.mickaeldebalme.android.newsletter.models.Article;
 import com.mickaeldebalme.android.newsletter.R;
-import com.mickaeldebalme.android.newsletter.ViewModels.ArticleViewModel;
+import com.mickaeldebalme.android.newsletter.viewmodels.ArticleViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

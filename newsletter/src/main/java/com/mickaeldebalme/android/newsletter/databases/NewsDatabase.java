@@ -1,7 +1,7 @@
-package com.mickaeldebalme.android.newsletter.Databases;
+package com.mickaeldebalme.android.newsletter.databases;
 
-import com.mickaeldebalme.android.newsletter.DAOs.ArticleDao;
-import com.mickaeldebalme.android.newsletter.Models.Article;
+import com.mickaeldebalme.android.newsletter.daos.ArticleDao;
+import com.mickaeldebalme.android.newsletter.models.Article;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

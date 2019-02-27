@@ -1,4 +1,4 @@
-package com.mickaeldebalme.android.newsletter.Fragments;
+package com.mickaeldebalme.android.newsletter.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,14 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mickaeldebalme.android.newsletter.Listeners.ArticleListener;
-import com.mickaeldebalme.android.newsletter.Models.Article;
+import com.mickaeldebalme.android.newsletter.models.Article;
 import com.mickaeldebalme.android.newsletter.R;
-import com.mickaeldebalme.android.newsletter.ViewModels.ArticleViewModel;
+import com.mickaeldebalme.android.newsletter.viewmodels.ArticleViewModel;
 import com.squareup.picasso.Picasso;
-
-import java.util.Observable;
-import java.util.Observer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

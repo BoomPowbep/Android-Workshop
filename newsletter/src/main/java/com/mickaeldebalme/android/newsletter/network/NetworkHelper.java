@@ -1,9 +1,8 @@
-package com.mickaeldebalme.android.newsletter.Network;
+package com.mickaeldebalme.android.newsletter.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.widget.Toast;
 
 public class NetworkHelper {
 

@@ -1,6 +1,6 @@
-package com.mickaeldebalme.android.newsletter.DAOs;
+package com.mickaeldebalme.android.newsletter.daos;
 
-import com.mickaeldebalme.android.newsletter.Models.Article;
+import com.mickaeldebalme.android.newsletter.models.Article;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
-package com.mickaeldebalme.android.newsletter.ViewModels;
+package com.mickaeldebalme.android.newsletter.viewmodels;
 
-import com.mickaeldebalme.android.newsletter.Databases.DatabaseHelper;
-import com.mickaeldebalme.android.newsletter.Databases.NewsDatabase;
-import com.mickaeldebalme.android.newsletter.Models.Article;
-import com.mickaeldebalme.android.newsletter.Models.ArticlesApiResponse;
-import com.mickaeldebalme.android.newsletter.Network.ArticlesAPI;
-import com.mickaeldebalme.android.newsletter.Network.NetworkHelper;
-import com.mickaeldebalme.android.newsletter.Utils.Constants;
+import com.mickaeldebalme.android.newsletter.databases.DatabaseHelper;
+import com.mickaeldebalme.android.newsletter.databases.NewsDatabase;
+import com.mickaeldebalme.android.newsletter.models.Article;
+import com.mickaeldebalme.android.newsletter.models.ArticlesApiResponse;
+import com.mickaeldebalme.android.newsletter.network.ArticlesAPI;
+import com.mickaeldebalme.android.newsletter.network.NetworkHelper;
+import com.mickaeldebalme.android.newsletter.utils.Constants;
 
 import java.util.List;
 import java.util.concurrent.Callable;

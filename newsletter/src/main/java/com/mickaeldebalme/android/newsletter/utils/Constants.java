@@ -1,4 +1,4 @@
-package com.mickaeldebalme.android.newsletter.Utils;
+package com.mickaeldebalme.android.newsletter.utils;
 
 public class Constants {
 

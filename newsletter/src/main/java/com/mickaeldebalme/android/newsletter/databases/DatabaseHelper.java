@@ -1,7 +1,6 @@
-package com.mickaeldebalme.android.newsletter.Databases;
+package com.mickaeldebalme.android.newsletter.databases;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import java.util.concurrent.Callable;
 

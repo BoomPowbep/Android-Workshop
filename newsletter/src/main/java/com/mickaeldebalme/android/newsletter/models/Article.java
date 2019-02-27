@@ -1,4 +1,4 @@
-package com.mickaeldebalme.android.newsletter.Models;
+package com.mickaeldebalme.android.newsletter.models;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
