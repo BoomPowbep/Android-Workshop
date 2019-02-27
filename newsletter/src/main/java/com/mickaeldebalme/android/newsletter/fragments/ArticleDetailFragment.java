@@ -64,7 +64,7 @@ public class ArticleDetailFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        model.getSelected().observe(this, new androidx.lifecycle.Observer<Article>() {
+        model.getSelected().observe(getViewLifecycleOwner(), new androidx.lifecycle.Observer<Article>() {
             @Override
             public void onChanged(Article article) {
                 title.setText(article.getTitle());

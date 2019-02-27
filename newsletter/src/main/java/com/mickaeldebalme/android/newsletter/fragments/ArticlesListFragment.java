@@ -55,7 +55,7 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        model.getArticles().observe(this, new Observer<List<Article>>() {
+        model.getArticles().observe(getViewLifecycleOwner(), new Observer<List<Article>>() {
             @Override
             public void onChanged(List<Article> articles) {
                 adapter = new ArticleAdapter(articles, ArticlesListFragment.this);
@@ -113,7 +113,7 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
     public void onShare(Article article) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, article.getTitle() + " " + article.getUrl());
+        sendIntent.putExtra(Intent.EXTRA_TEXT, article.getUrl());
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
