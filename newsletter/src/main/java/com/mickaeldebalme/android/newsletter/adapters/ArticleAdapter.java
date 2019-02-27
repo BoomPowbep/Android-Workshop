@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * Classe ArticleAdapter
  * @author mickaeldebalme
  */
-public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHolder> {
+public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
 
     private List<Article> articles;
     private ArticleListener listener;
@@ -45,24 +45,24 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
      * A la création du View Holder
      * @param parent ViewGroup
      * @param viewType int
-     * @return MyViewHolder
+     * @return ArticleViewHolder
      */
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.single_article_mini, parent, false);
-        return new MyViewHolder(view);
+        return new ArticleViewHolder(view);
     }
 
     /**
      * A l'attachement au ViewHolder
-     * @param holder MyViewHolder
+     * @param holder ArticleViewHolder
      * @param position int
      */
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
         holder.bindItem(articles.get(position));
     }
 
@@ -75,7 +75,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         return articles.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    /**
+     * Classe ArticleViewHolder
+     * @author mickaeldebalme
+     */
+    class ArticleViewHolder extends RecyclerView.ViewHolder {
 
         TextView mTitle, mDescription;
         ImageView mImage, mShare, mLike;
@@ -85,7 +89,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
          * constructor
          * @param itemView View
          */
-        MyViewHolder(View itemView) {
+        ArticleViewHolder(View itemView) {
             super(itemView);
             this.view = itemView;
             mTitle = itemView.findViewById(R.id.article_title);
