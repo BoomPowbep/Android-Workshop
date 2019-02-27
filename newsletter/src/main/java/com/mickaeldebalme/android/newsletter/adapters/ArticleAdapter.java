@@ -81,9 +81,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
      */
     class ArticleViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTitle, mDescription;
-        ImageView mImage, mShare, mLike;
-        View view;
+        private TextView mTitle, mDescription;
+        private ImageView mImage, mShare, mLike;
+        private View view;
 
         /**
          * constructor
