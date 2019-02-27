@@ -5,12 +5,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+/**
+ * Classe NetworkHelper
+ * @author mickaeldebalme
+ */
 public class NetworkHelper {
 
     private static final String LOGTAG = "NetworkHelper";
 
     /**
-     * Status de la connectivité
+     * Statut de la connectivité
      */
     private static boolean networkSatus;
 

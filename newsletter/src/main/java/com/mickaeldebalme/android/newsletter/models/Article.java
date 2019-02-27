@@ -3,6 +3,10 @@ package com.mickaeldebalme.android.newsletter.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Classe Article
+ * @author mickaeldebalme
+ */
 @Entity
 public class Article {
 
@@ -13,6 +17,16 @@ public class Article {
 
     private boolean liked;
 
+    /**
+     * constructor
+     * @param id int
+     * @param urlToImage string
+     * @param title string
+     * @param description string
+     * @param url string
+     * @param content string
+     * @param liked boolean
+     */
     public Article(int id, String urlToImage, String title, String description, String url, String content, boolean liked) {
         this.id = id;
         this.urlToImage = urlToImage;
@@ -23,62 +37,82 @@ public class Article {
         this.liked = liked;
     }
 
+    /**
+     * GET id
+     * @return int
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * SET id
+     * @param id int
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * GET image url
+     * @return string
+     */
     public String getUrlToImage() {
         return urlToImage;
     }
 
-    public void setUrlToImage(String urlToImage) {
-        this.urlToImage = urlToImage;
-    }
-
+    /**
+     * GET title
+     * @return string
+     */
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
+    /**
+     * GET description
+     * @return string
+     */
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    /**
+     * GET url
+     * @return string
+     */
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
+    /**
+     * GET content
+     * @return string
+     */
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
+    /**
+     * permet de vérifier si un article est liké
+     * @return boolean
+     */
     public boolean isLiked() {
         return liked;
     }
 
+    /**
+     * Définit le statut de like d'un article
+     * @param liked boolean
+     */
     public void setLiked(boolean liked) {
         this.liked = liked;
     }
 
+    /**
+     * Convertit l'objet en string.
+     * @return string
+     */
     @Override
     public String toString() {
         return "Article{" +

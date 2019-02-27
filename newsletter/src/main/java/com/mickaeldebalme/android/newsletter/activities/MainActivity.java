@@ -11,8 +11,16 @@ import com.mickaeldebalme.android.newsletter.R;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+/**
+ * Classe MainActivity
+ * @author mickaeldebalme
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * A la création de l'activité
+     * @param savedInstanceState Bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         this.displayArticlesList();
     }
 
+    /**
+     * Lance l'affichage de la liste des articles
+     */
     private void displayArticlesList() {
         ArticlesListFragment fragment = new ArticlesListFragment();
 

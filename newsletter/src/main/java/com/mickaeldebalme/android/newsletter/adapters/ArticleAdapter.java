@@ -17,6 +17,10 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Classe ArticleAdapter
+ * @author mickaeldebalme
+ */
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHolder> {
 
     private List<Article> articles;
@@ -27,11 +31,22 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         this.articles = articles;
     }
 
+    /**
+     * constructor.
+     * @param articles List<Article>
+     * @param listener ArticlesListFragment
+     */
     public ArticleAdapter(List<Article> articles, ArticlesListFragment listener) {
         this.articles = articles;
         this.listener = listener;
     }
 
+    /**
+     * A la création du View Holder
+     * @param parent ViewGroup
+     * @param viewType int
+     * @return MyViewHolder
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,11 +56,20 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         return new MyViewHolder(view);
     }
 
+    /**
+     * A l'attachement au ViewHolder
+     * @param holder MyViewHolder
+     * @param position int
+     */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.bindItem(articles.get(position));
     }
 
+    /**
+     * GET nombre d'items
+     * @return int
+     */
     @Override
     public int getItemCount() {
         return articles.size();
@@ -57,6 +81,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         ImageView mImage, mShare, mLike;
         View view;
 
+        /**
+         * constructor
+         * @param itemView View
+         */
         MyViewHolder(View itemView) {
             super(itemView);
             this.view = itemView;
@@ -67,6 +95,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
             mLike = itemView.findViewById(R.id.like_btn);
         }
 
+        /**
+         * lie un article
+         * @param article Article
+         */
         private void bindItem(final Article article) {
 
             mShare.setOnClickListener(new View.OnClickListener() {

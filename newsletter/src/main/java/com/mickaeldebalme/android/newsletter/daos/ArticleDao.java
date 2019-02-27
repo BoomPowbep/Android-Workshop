@@ -9,6 +9,10 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+/**
+ * Interface ArticleDAO
+ * @author mickaeldebalme
+ */
 @Dao
 public interface ArticleDao {
 

@@ -25,6 +25,10 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Classe ArticlesListFragment
+ * @author mickaeldebalme
+ */
 public class ArticlesListFragment extends Fragment implements ArticleListener {
 
     private List<Article> articles = new ArrayList<>();
@@ -32,6 +36,10 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
     private ArticleViewModel model;
     private RecyclerView recyclerView;
 
+    /**
+     * A la création du fragment
+     * @param savedInstanceState Bundle
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +47,10 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
         model = ViewModelProviders.of(getActivity()).get(ArticleViewModel.class);
     }
 
+    /**
+     * Après la création de l'activité
+     * @param savedInstanceState Bundle
+     */
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -52,6 +64,13 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
         });
     }
 
+    /**
+     * A la création de la vue
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,18 +86,17 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
 
     /**
      * Click sur un article
-     *
      * @param article l'article cliqué
      */
     @Override
     public void onSelect(Article article) {
-//        Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-//        browserIntent.setData(Uri.parse(article.getUrl()));
-//        startActivity(browserIntent);
         model.setSelected(article);
         showDetail();
     }
 
+    /**
+     * Affiche le détail d'un article
+     */
     private void showDetail() {
         ArticleDetailFragment frag = new ArticleDetailFragment();
         FragmentTransaction transac = getActivity().getSupportFragmentManager().beginTransaction();
@@ -89,7 +107,6 @@ public class ArticlesListFragment extends Fragment implements ArticleListener {
 
     /**
      * Click sur un bouton share
-     *
      * @param article Article à partager
      */
     @Override

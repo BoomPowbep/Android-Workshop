@@ -17,6 +17,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+/**
+ * Classe ArticleDetailFragment
+ * @author mickaeldebalme
+ */
 public class ArticleDetailFragment extends Fragment {
 
     private ArticleViewModel model;
@@ -25,12 +29,23 @@ public class ArticleDetailFragment extends Fragment {
     private TextView description;
     private ImageView image;
 
+    /**
+     * A la création du fragment
+     * @param savedInstanceState Bundle
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         model = ViewModelProviders.of(getActivity()).get(ArticleViewModel.class);
     }
 
+    /**
+     * A la création de la vue
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,6 +57,10 @@ public class ArticleDetailFragment extends Fragment {
 
     }
 
+    /**
+     * A la création de l'activité
+     * @param savedInstanceState Bundle
+     */
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -58,6 +77,4 @@ public class ArticleDetailFragment extends Fragment {
             }
         });
     }
-
-
 }

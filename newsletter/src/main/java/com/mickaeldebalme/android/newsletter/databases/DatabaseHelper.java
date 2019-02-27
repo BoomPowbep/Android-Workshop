@@ -8,6 +8,10 @@ import androidx.room.Room;
 import bolts.Continuation;
 import bolts.Task;
 
+/**
+ * Classe DatabaseHelper
+ * @author mickaeldebalme
+ */
 public class DatabaseHelper {
 
     /**

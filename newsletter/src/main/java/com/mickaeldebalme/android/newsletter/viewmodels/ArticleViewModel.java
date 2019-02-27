@@ -24,6 +24,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Classe ArticleViewModel
+ * @author mickaeldebalme
+ */
 public class ArticleViewModel extends ViewModel {
 
     private static final String LOGTAG = "ArticleViewModel";
@@ -31,6 +35,10 @@ public class ArticleViewModel extends ViewModel {
     private MutableLiveData<List<Article>> articlesLiveData;
     private MutableLiveData<Article> selected = new MutableLiveData<>();
 
+    /**
+     * Initie le processus ce récupération des articles.
+     * @return LiveData<List<Article>>
+     */
     public LiveData<List<Article>> getArticles() {
 
         if (articlesLiveData == null) {
@@ -46,10 +54,18 @@ public class ArticleViewModel extends ViewModel {
         return articlesLiveData;
     }
 
+    /**
+     * SET article sélectionné
+     * @param article Article
+     */
     public void setSelected(Article article) {
         selected.setValue(article);
     }
 
+    /**
+     * GET article sélectionné
+     * @return LiveData<Article>
+     */
     public LiveData<Article> getSelected() {
         return selected;
     }
