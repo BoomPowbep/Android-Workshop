@@ -61,12 +61,20 @@ public class Article {
         return urlToImage;
     }
 
+    public void setUrlToImage(String urlToImage) {
+        this.urlToImage = urlToImage;
+    }
+
     /**
      * GET title
      * @return string
      */
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
@@ -77,6 +85,10 @@ public class Article {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     /**
      * GET url
      * @return string
@@ -84,6 +96,11 @@ public class Article {
     public String getUrl() {
         return url;
     }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
 
     /**
      * GET content
