@@ -1,5 +1,7 @@
 package com.mickaeldebalme.android.newsletter.viewmodels;
 
+import android.util.Log;
+
 import com.mickaeldebalme.android.newsletter.databases.DatabaseHelper;
 import com.mickaeldebalme.android.newsletter.databases.NewsDatabase;
 import com.mickaeldebalme.android.newsletter.models.Article;
@@ -23,6 +25,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ArticleViewModel extends ViewModel {
+
+    private static final String LOGTAG = "ArticleViewModel";
 
     private MutableLiveData<List<Article>> articlesLiveData;
     private MutableLiveData<Article> selected = new MutableLiveData<>();
@@ -74,7 +78,7 @@ public class ArticleViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<ArticlesApiResponse> call, Throwable t) {
-                System.out.println("RES ERR - " + t.getLocalizedMessage());
+                Log.d(LOGTAG, "RES ERR - " + t.getLocalizedMessage());
             }
         });
     }
@@ -95,7 +99,7 @@ public class ArticleViewModel extends ViewModel {
         }).continueWith(new Continuation<Void, Object>() {
             @Override
             public Object then(Task<Void> task) throws Exception {
-                System.out.println("Articles saved in database");
+                Log.d(LOGTAG, "Articles saved in database");
                 return null;
             }
         }, Task.UI_THREAD_EXECUTOR);
@@ -115,7 +119,7 @@ public class ArticleViewModel extends ViewModel {
             @Override
             public Object then(Task<List<Article>> task) {
                 articlesLiveData.setValue(task.getResult());
-                System.out.println("Articles loaded from database");
+                Log.d(LOGTAG, "Articles loaded from database");
                 return null;
             }
         }, Task.UI_THREAD_EXECUTOR);

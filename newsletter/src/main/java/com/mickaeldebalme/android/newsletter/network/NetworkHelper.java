@@ -3,8 +3,11 @@ package com.mickaeldebalme.android.newsletter.network;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 public class NetworkHelper {
+
+    private static final String LOGTAG = "NetworkHelper";
 
     /**
      * Status de la connectivité
@@ -21,10 +24,10 @@ public class NetworkHelper {
         boolean isConnected = activeNetwork != null && activeNetwork.isConnected();
         if (isConnected) {
             networkSatus = true;
-            System.out.println("Internet detected");
+            Log.d(LOGTAG, "Internet detected");
         } else {
             networkSatus = false;
-            System.out.println("No internet");
+            Log.d(LOGTAG,"No internet");
         }
     }
 
