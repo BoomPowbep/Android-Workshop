@@ -61,6 +61,10 @@ public class Article {
         return urlToImage;
     }
 
+    /**
+     * SET image url
+     * @param urlToImage string
+     */
     public void setUrlToImage(String urlToImage) {
         this.urlToImage = urlToImage;
     }
@@ -73,6 +77,10 @@ public class Article {
         return title;
     }
 
+    /**
+     * SET title
+     * @param title string
+     */
     public void setTitle(String title) {
         this.title = title;
     }
@@ -85,6 +93,10 @@ public class Article {
         return description;
     }
 
+    /**
+     * SET description
+     * @param description string
+     */
     public void setDescription(String description) {
         this.description = description;
     }
@@ -97,10 +109,13 @@ public class Article {
         return url;
     }
 
+    /**
+     * SET url
+     * @param url string
+     */
     public void setUrl(String url) {
         this.url = url;
     }
-
 
     /**
      * GET content
